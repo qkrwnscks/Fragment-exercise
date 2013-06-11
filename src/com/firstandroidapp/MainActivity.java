@@ -1,7 +1,16 @@
 package com.firstandroidapp;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 
 public class MainActivity extends FragmentActivity {
@@ -23,6 +32,21 @@ public class MainActivity extends FragmentActivity {
 			//set fragment from restored state info
 			mFragment = (MainFragment) getSupportFragmentManager()
 					.findFragmentById(android.R.id.content);
+		}
+		
+		//print out key hash, use hash value (catching invalid key hash)
+		try {
+			PackageInfo info = getPackageManager().getPackageInfo(
+					"com.firstandroidapp.MainActivity",
+					PackageManager.GET_SIGNATURES);
+			for (Signature sig : info.signatures) {
+				MessageDigest md = MessageDigest.getInstance("SHA");
+				Log.d("KeyHash:",Base64.encodeToString(md.digest(), Base64.DEFAULT));
+			}
+		} catch (NameNotFoundException e) {
+			
+		} catch (NoSuchAlgorithmException e) {
+			
 		}
 		
 	}

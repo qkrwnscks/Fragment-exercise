@@ -1,6 +1,6 @@
 package com.firstandroidapp;
 
-import java.util.Arrays;
+//import java.util.Arrays;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
-import com.facebook.model.GraphObject;
+//import com.facebook.model.GraphObject;
 import com.facebook.widget.LoginButton;
 
 
@@ -41,7 +41,7 @@ public class MainFragment extends Fragment{
 	private void onSessionStateChange(Session session, SessionState state,
 			Exception exception){
 		if(state.isOpened()) {
-			Log.i(TAG, "Logged in");
+			Log.i(TAG,"Logged in");
 		} else if (state.isClosed()) {
 			Log.i(TAG,"Logged out");
 		}
@@ -96,9 +96,9 @@ public class MainFragment extends Fragment{
 		uiHelper.onSaveInstanceState(outState);
 	}
 	
-	private interface GraphFeed extends GraphObject {
-		String getName();
-		String getFeed();
-	}
+//	private interface GraphFeed extends GraphObject {
+//		String getName();
+//		String getFeed();
+//	}
 
 }
